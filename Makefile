@@ -6,7 +6,7 @@
 #    By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/23 12:28:09 by amarchal          #+#    #+#              #
-#    Updated: 2022/01/27 16:11:53 by amarchal         ###   ########.fr        #
+#    Updated: 2022/01/28 16:15:04 by amarchal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,12 @@ LIBMLX = ./mlx/libmlx.a
 SRCS =	./SRCS/so_long.c				\
 		./SRCS/get_next_line.c			\
 		./SRCS/get_next_line_utils.c	\
+		./SRCS/create_map.c				\
 		./SRCS/check_map.c				\
 		./SRCS/control_map_data.c		\
+		./SRCS/map_info.c				\
+		./SRCS/game.c					\
+		./SRCS/moves.c					\
 		./SRCS/print_map.c
 
 HDRS = 	./so_long.h

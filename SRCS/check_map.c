@@ -6,13 +6,13 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:41:33 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/27 17:28:56 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/01/28 11:58:22 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_init_data(t_parse_info *data)
+void	ft_init_map_info(t_parse_info *data)
 {
 	data->outline = TRUE;
 	data->collectible = 0;
@@ -60,7 +60,7 @@ void	ft_check_map(char **map)
 
 	i = 0;
 	map_data = malloc(sizeof(t_parse_info));
-	ft_init_data(map_data);
+	ft_init_map_info(map_data);
 	map_data->line_len = ft_strlen(map[0]);
 	while (map[i])
 	{
@@ -71,32 +71,4 @@ void	ft_check_map(char **map)
 	}
 	ft_control_map_data(map_data);
 	free(map_data);
-}
-
-char	**ft_create_map(char *file)
-{
-	int		fd;
-	char	*str;
-	char	*map;
-	char	**map2d;
-
-	map = malloc(sizeof(char) * 1);
-	map[0] = '\0';
-	fd = open(file, O_RDONLY);
-	str = get_next_line(fd);
-	while (str)
-	{
-		map = ft_strjoin_gnl(map, str);
-		free(str);
-		str = get_next_line(fd);
-		if (str && str[0] == '\n')
-		{
-			printf("Error : map error\n");
-			exit(EXIT_FAILURE);
-		}
-	}
-	map2d = ft_split(map, '\n');
-	free(map);
-	ft_check_map(map2d);
-	return (map2d);
 }
