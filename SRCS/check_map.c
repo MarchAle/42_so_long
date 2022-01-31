@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:41:33 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/28 11:58:22 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:39:32 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_check_inline(char c, t_parse_info *data)
 		data->exit++;
 	else if (c == 'P')
 		data->player++;
-	else if (c != '0' && c != '1')
+	else if (c != '0' && c != '1') // && c != 'X'
 		data->error = TRUE;
 }
 

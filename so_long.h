@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:31:31 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/28 17:39:50 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:14:55 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,22 @@
 # define TRUE 1
 # define FALSE 0
 
-# define SIZE 32
+# define SIZE 100
 
 # define MAP data->map2d
 # define PLAYER data->player
 
 typedef struct s_player
 {
-	int	x;
-	int	y;
-	int	to_collect;
-	int	collected;
-	int	step;
+	int		x;
+	int		y;
+	int		to_collect;
+	int		collected;
+	int		step;
+	int		exit_x;
+	int		exit_y;
+	int		enemies;
+	char	**e_pos;
 }	t_player;
 
 typedef struct s_parse_info
@@ -53,20 +57,52 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	void	*player;
-	void	*wall;
-	void	*floor;
-	void	*collectible;
-	void	*exit;
 	int		width[1];
 	int		height[1];
 }	t_mlx;
+
+typedef struct s_img
+{
+	void	*tl;
+	void	*t;
+	void	*tr;
+	void	*l;
+	void	*c;
+	void	*r;
+	void	*bl;
+	void	*b;
+	void	*br;
+	void	*e_open;
+	void	*e1;
+	void	*e2;
+	void	*e3;
+	void	*e4;
+	void	*e5;
+	void	*e6;
+	void	*e7;
+	void	*rocks;
+	void	*gem;
+	void	*player;
+	void	*floor;
+	void	*collectible;
+}	t_img;
+
+typedef struct s_anim
+{
+	void	*p_1;
+	void	*p_2;
+	void	*p_3;
+	void	*p_4;
+}	t_anim;
+
 
 typedef struct s_data
 {
 	char			**map2d;
 	t_mlx			*mlx;
 	t_player		*player;
+	t_img			*img;
+	t_anim			*p_anim;
 }	t_data;
 
 char	*get_next_line(int fd);
@@ -82,13 +118,27 @@ void	ft_check_inline(char c, t_parse_info *data);
 void	ft_control_map_data(t_parse_info *data);
 
 void	ft_map_info(t_data *data);
-void	ft_print_sprite(t_mlx *mlx, char c, int x, int y);
+void	ft_print_sprite(t_data *data, char c, int x, int y);
+void	ft_print_wall(t_data *data, int x, int y);
+void	ft_print_exit(t_data *data, int x, int y);
 int		ft_print_map(t_data *data);
+
+int		key_hook(int keycode, t_data *data);
+
+int		ft_animate(t_data *data);
+void	ft_animate_player(t_data *data);
+void	ft_change_anim(t_data *data, char *dir);
+void	ft_change_anim_front(t_data *data);
+void	ft_change_anim_back(t_data *data);
+void	ft_change_anim_left(t_data *data);
+void	ft_change_anim_right(t_data *data);
 
 void	ft_game(t_data *data);
 void	move_up(t_data *data);
 void	move_down(t_data *data);
 void	move_left(t_data *data);
 void	move_right(t_data *data);
+
+int		ft_exit(t_data *data);
 
 #endif
