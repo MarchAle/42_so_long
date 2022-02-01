@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:31:31 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/31 18:14:55 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:51:29 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,18 @@ typedef struct s_img
 	void	*e7;
 	void	*rocks;
 	void	*gem;
-	void	*player;
+	// void	*player;
+	void	*enem;
 	void	*floor;
 	void	*collectible;
+	void	*el_1;
+	void	*el_2;
+	void	*el_3;
+	void	*el_4;
+	void	*er_1;
+	void	*er_2;
+	void	*er_3;
+	void	*er_4;
 }	t_img;
 
 typedef struct s_anim
@@ -95,6 +104,13 @@ typedef struct s_anim
 	void	*p_4;
 }	t_anim;
 
+typedef struct s_enem
+{
+	int				x;
+	int				y;
+	char			dir;
+	struct s_enem	*next;
+}	t_enem;
 
 typedef struct s_data
 {
@@ -103,6 +119,7 @@ typedef struct s_data
 	t_player		*player;
 	t_img			*img;
 	t_anim			*p_anim;
+	t_enem			**enem_lst;
 }	t_data;
 
 char	*get_next_line(int fd);
@@ -117,7 +134,9 @@ void	ft_check_line(char *line, t_parse_info *data, int index, int last_line);
 void	ft_check_inline(char c, t_parse_info *data);
 void	ft_control_map_data(t_parse_info *data);
 
+void	ft_add_enemi(t_data *data, int i, int j);
 void	ft_map_info(t_data *data);
+
 void	ft_print_sprite(t_data *data, char c, int x, int y);
 void	ft_print_wall(t_data *data, int x, int y);
 void	ft_print_exit(t_data *data, int x, int y);

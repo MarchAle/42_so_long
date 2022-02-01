@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:32:14 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/31 17:35:13 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/01 14:47:16 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,20 @@ void	ft_init_data(t_data *data)
 	t_player	*player;
 	t_img		*img;
 	t_anim		*p_anim;
+	t_enem		**enem_lst;
 	
 	mlx = malloc(sizeof(t_mlx));
 	player = malloc(sizeof(t_player));
 	img = malloc(sizeof(t_img));
 	p_anim = malloc(sizeof(t_anim));
+	enem_lst = malloc(sizeof(t_enem));
+	// enem_lst = NULL;
+	
 	data->mlx = mlx;
 	data->player = player;
 	data->img = img;
 	data->p_anim = p_anim;
+	data->enem_lst = enem_lst;
 }
 
 int	main(int ac, char **av)
@@ -45,7 +50,6 @@ int	main(int ac, char **av)
 	data->mlx->mlx = mlx_init();
 	data->mlx->win = mlx_new_window(data->mlx->mlx, ft_strlen(MAP[0]) * SIZE, ft_strlen2d(MAP) * SIZE, "So Long");
 	ft_print_map(data);
-	
 	mlx_loop_hook(data->mlx->mlx, ft_animate, data);
 	mlx_hook(data->mlx->win, 2, 0, key_hook, data);
 	mlx_hook(data->mlx->win, 17, 0, ft_exit, NULL);
