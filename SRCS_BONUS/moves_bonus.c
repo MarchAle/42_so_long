@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:10:20 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 15:27:50 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:23:55 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ void	move_up(t_data *data)
 		}
 		data->map2d[data->player->y][data->player->x] = '0';
 		data->player->y--;
-		ft_print_sprite(data, 'P', data->player->x, data->player->y);
 		ft_print_sprite(data, '0', data->player->x, data->player->y + 1);
+		ft_animate_player(data);
 		data->player->step++;
+		ft_check_contact(data);
 	}
 }
 
@@ -55,9 +56,10 @@ void	move_down(t_data *data)
 		}
 		data->map2d[data->player->y][data->player->x] = '0';
 		data->player->y++;
-		ft_print_sprite(data, 'P', data->player->x, data->player->y);
 		ft_print_sprite(data, '0', data->player->x, data->player->y - 1);
+		ft_animate_player(data);
 		data->player->step++;
+		ft_check_contact(data);
 	}
 }
 
@@ -74,9 +76,10 @@ void	move_left(t_data *data)
 		}
 		data->map2d[data->player->y][data->player->x] = '0';
 		data->player->x--;
-		ft_print_sprite(data, 'P', data->player->x, data->player->y);
 		ft_print_sprite(data, '0', data->player->x + 1, data->player->y);
+		ft_animate_player(data);
 		data->player->step++;
+		ft_check_contact(data);
 	}
 }
 
@@ -93,8 +96,9 @@ void	move_right(t_data *data)
 		}
 		data->map2d[data->player->y][data->player->x] = '0';
 		data->player->x++;
-		ft_print_sprite(data, 'P', data->player->x, data->player->y);
 		ft_print_sprite(data, '0', data->player->x - 1, data->player->y);
+		ft_animate_player(data);
 		data->player->step++;
+		ft_check_contact(data);
 	}
 }

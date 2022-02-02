@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:04:13 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 15:13:30 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:23:06 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,6 @@ void	ft_print_sprite(t_data *data, char c, int x, int y)
 	if (c == 'C')
 		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, \
 		data->img->collectible, x * SIZE, y * SIZE);
-	if (c == 'P')
-		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, \
-		data->img->player, x * SIZE, y * SIZE);
 	if (c == 'E')
 		ft_print_exit(data, x, y);
 }

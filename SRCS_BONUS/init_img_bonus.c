@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 11:59:03 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 15:27:20 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/02 12:09:34 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,34 @@ void	ft_init_exit_img(t_data *data)
 	"./img/e7.xpm", data->mlx->width, data->mlx->height);
 }
 
+void	ft_init_enemi_img(t_data *data)
+{
+	data->img->el_1 = mlx_xpm_file_to_image(data->mlx->mlx, \
+	"./img/gl1.xpm", data->mlx->width, data->mlx->height);
+	data->img->el_2 = mlx_xpm_file_to_image(data->mlx->mlx, \
+	"./img/gl2.xpm", data->mlx->width, data->mlx->height);
+	data->img->el_3 = mlx_xpm_file_to_image(data->mlx->mlx, \
+	"./img/gl3.xpm", data->mlx->width, data->mlx->height);
+	data->img->el_4 = mlx_xpm_file_to_image(data->mlx->mlx, \
+	"./img/gl4.xpm", data->mlx->width, data->mlx->height);
+	data->img->er_1 = mlx_xpm_file_to_image(data->mlx->mlx, \
+	"./img/gr1.xpm", data->mlx->width, data->mlx->height);
+	data->img->er_2 = mlx_xpm_file_to_image(data->mlx->mlx, \
+	"./img/gr2.xpm", data->mlx->width, data->mlx->height);
+	data->img->er_3 = mlx_xpm_file_to_image(data->mlx->mlx, \
+	"./img/gr3.xpm", data->mlx->width, data->mlx->height);
+	data->img->er_4 = mlx_xpm_file_to_image(data->mlx->mlx, \
+	"./img/gr4.xpm", data->mlx->width, data->mlx->height);
+}
+
 void	ft_init_img(t_data *data)
 {
 	ft_init_wall_img(data);
 	ft_init_exit_img(data);
+	ft_init_enemi_img(data);
+	ft_change_anim_front(data);
 	data->img->floor = mlx_xpm_file_to_image(data->mlx->mlx, \
 	"./img/c.xpm", data->mlx->width, data->mlx->height);
 	data->img->collectible = mlx_xpm_file_to_image(data->mlx->mlx, \
 	"./img/gem.xpm", data->mlx->width, data->mlx->height);
-	data->img->player = mlx_xpm_file_to_image(data->mlx->mlx, \
-	"./img/f1.xpm", data->mlx->width, data->mlx->height);
 }

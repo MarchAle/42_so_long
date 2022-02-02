@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:41:33 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 16:10:33 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/02 16:09:06 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_init_map_info(t_parse_info *data)
 	data->collectible = 0;
 	data->exit = 0;
 	data->player = 0;
-	data->error = FALSE;
+	data->error = TRUE;
 }
 
 void	ft_check_inline(char c, t_parse_info *data)
@@ -29,7 +29,7 @@ void	ft_check_inline(char c, t_parse_info *data)
 		data->exit++;
 	else if (c == 'P')
 		data->player++;
-	else if (c != '0' && c != '1')
+	else if (c != '0' && c != '1' && c != 'X')
 		data->error = TRUE;
 }
 

@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:31:31 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 13:39:30 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/02 15:14:08 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_img
 	void	*er_2;
 	void	*er_3;
 	void	*er_4;
+	void	*player;
 }	t_img;
 
 typedef struct s_anim
