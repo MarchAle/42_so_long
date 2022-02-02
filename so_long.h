@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:31:31 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/01 16:51:29 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:39:30 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@
 # define FALSE 0
 
 # define SIZE 100
-
-# define MAP data->map2d
-# define PLAYER data->player
 
 typedef struct s_player
 {
@@ -82,7 +79,6 @@ typedef struct s_img
 	void	*e7;
 	void	*rocks;
 	void	*gem;
-	// void	*player;
 	void	*enem;
 	void	*floor;
 	void	*collectible;
@@ -137,12 +133,22 @@ void	ft_control_map_data(t_parse_info *data);
 void	ft_add_enemi(t_data *data, int i, int j);
 void	ft_map_info(t_data *data);
 
+void	ft_init_wall_img(t_data *data);
+void	ft_init_exit_img(t_data *data);
+void	ft_init_enemi_img(t_data *data);
+void	ft_init_img(t_data *data);
+
 void	ft_print_sprite(t_data *data, char c, int x, int y);
 void	ft_print_wall(t_data *data, int x, int y);
+void	ft_print_wall_bis(t_data *data, int x, int y);
 void	ft_print_exit(t_data *data, int x, int y);
 int		ft_print_map(t_data *data);
 
 int		key_hook(int keycode, t_data *data);
+void	move_up(t_data *data);
+void	move_down(t_data *data);
+void	move_left(t_data *data);
+void	move_right(t_data *data);
 
 int		ft_animate(t_data *data);
 void	ft_animate_player(t_data *data);
@@ -152,12 +158,12 @@ void	ft_change_anim_back(t_data *data);
 void	ft_change_anim_left(t_data *data);
 void	ft_change_anim_right(t_data *data);
 
-void	ft_game(t_data *data);
-void	move_up(t_data *data);
-void	move_down(t_data *data);
-void	move_left(t_data *data);
-void	move_right(t_data *data);
+void	ft_anim_l(t_data *data, t_enem *enemi, int i);
+void	ft_anim_r(t_data *data, t_enem *enemi, int i);
+void	ft_animate_enemies(t_data *data);
+void	ft_move_enem(t_data *data, t_enem *enemi, int i);
 
+void	ft_check_contact(t_data *data);
 int		ft_exit(t_data *data);
 
 #endif

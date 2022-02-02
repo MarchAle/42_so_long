@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:10:20 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/01 17:56:31 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:23:55 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,94 +14,91 @@
 
 void	ft_check_exit(t_data *data)
 {
-	if (PLAYER->collected == PLAYER->to_collect)
+	if (data->player->collected == data->player->to_collect)
 	{
 		mlx_destroy_window(data->mlx, data->mlx->win);
 		exit(EXIT_SUCCESS);
 	}
-	printf("%d remaining items to collect !\n", PLAYER->to_collect - PLAYER->collected);
+	printf("%d remaining items to collect !\n", \
+	data->player->to_collect - data->player->collected);
 }
 
 void	move_up(t_data *data)
 {
-	if (MAP[PLAYER->y - 1][PLAYER->x] == 'E')
+	if (data->map2d[data->player->y - 1][data->player->x] == 'E')
 		ft_check_exit(data);
 	else
 	{
-		if (MAP[PLAYER->y - 1][PLAYER->x] == 'C')
+		if (data->map2d[data->player->y - 1][data->player->x] == 'C')
 		{
-			PLAYER->collected++;
+			data->player->collected++;
 			ft_print_exit(data, data->player->exit_x, data->player->exit_y);
 		}
-		// MAP[PLAYER->y - 1][PLAYER->x] = 'P';
-		MAP[PLAYER->y][PLAYER->x] = '0';
-		PLAYER->y--;
-		ft_print_sprite(data, '0', PLAYER->x, PLAYER->y + 1);
+		data->map2d[data->player->y][data->player->x] = '0';
+		data->player->y--;
+		ft_print_sprite(data, '0', data->player->x, data->player->y + 1);
 		ft_animate_player(data);
-		// ft_print_sprite(data, 'P', PLAYER->x, PLAYER->y);	
-		PLAYER->step++; 
+		data->player->step++;
+		ft_check_contact(data);
 	}
 }
 
 void	move_down(t_data *data)
 {
-	if (MAP[PLAYER->y + 1][PLAYER->x] == 'E')
+	if (data->map2d[data->player->y + 1][data->player->x] == 'E')
 		ft_check_exit(data);
 	else
 	{
-		if (MAP[PLAYER->y + 1][PLAYER->x] == 'C')
+		if (data->map2d[data->player->y + 1][data->player->x] == 'C')
 		{
-			PLAYER->collected++;
+			data->player->collected++;
 			ft_print_exit(data, data->player->exit_x, data->player->exit_y);
 		}
-		// MAP[PLAYER->y + 1][PLAYER->x] = 'P';
-		MAP[PLAYER->y][PLAYER->x] = '0';
-		PLAYER->y++;
-		ft_print_sprite(data, '0', PLAYER->x, PLAYER->y - 1);
+		data->map2d[data->player->y][data->player->x] = '0';
+		data->player->y++;
+		ft_print_sprite(data, '0', data->player->x, data->player->y - 1);
 		ft_animate_player(data);
-		// ft_print_sprite(data, 'P', PLAYER->x, PLAYER->y);
-		PLAYER->step++; 
+		data->player->step++;
+		ft_check_contact(data);
 	}
 }
 
 void	move_left(t_data *data)
 {
-	if (MAP[PLAYER->y][PLAYER->x - 1] == 'E')
+	if (data->map2d[data->player->y][data->player->x - 1] == 'E')
 		ft_check_exit(data);
 	else
 	{
-		if (MAP[PLAYER->y][PLAYER->x - 1] == 'C')
+		if (data->map2d[data->player->y][data->player->x - 1] == 'C')
 		{
-			PLAYER->collected++;
+			data->player->collected++;
 			ft_print_exit(data, data->player->exit_x, data->player->exit_y);
 		}
-		// MAP[PLAYER->y][PLAYER->x - 1] = 'P';
-		MAP[PLAYER->y][PLAYER->x] = '0';
-		PLAYER->x--;
-		ft_print_sprite(data, '0', PLAYER->x + 1, PLAYER->y);
+		data->map2d[data->player->y][data->player->x] = '0';
+		data->player->x--;
+		ft_print_sprite(data, '0', data->player->x + 1, data->player->y);
 		ft_animate_player(data);
-		// ft_print_sprite(data, 'P', PLAYER->x, PLAYER->y);
-		PLAYER->step++; 
+		data->player->step++;
+		ft_check_contact(data);
 	}
 }
 
 void	move_right(t_data *data)
 {
-	if (MAP[PLAYER->y][PLAYER->x + 1] == 'E')
+	if (data->map2d[data->player->y][data->player->x + 1] == 'E')
 		ft_check_exit(data);
 	else
 	{
-		if (MAP[PLAYER->y][PLAYER->x + 1] == 'C')
+		if (data->map2d[data->player->y][data->player->x + 1] == 'C')
 		{
-			PLAYER->collected++;
+			data->player->collected++;
 			ft_print_exit(data, data->player->exit_x, data->player->exit_y);
 		}
-		// MAP[PLAYER->y][PLAYER->x + 1] = 'P';
-		MAP[PLAYER->y][PLAYER->x] = '0';
-		PLAYER->x++;
-		ft_print_sprite(data, '0', PLAYER->x - 1, PLAYER->y);
+		data->map2d[data->player->y][data->player->x] = '0';
+		data->player->x++;
+		ft_print_sprite(data, '0', data->player->x - 1, data->player->y);
 		ft_animate_player(data);
-		// ft_print_sprite(data, 'P', PLAYER->x, PLAYER->y);		
-		PLAYER->step++; 
+		data->player->step++;
+		ft_check_contact(data);
 	}
 }

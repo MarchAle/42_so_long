@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:41:47 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/01 17:09:50 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/02 13:22:35 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ void	ft_check_char(t_data *data, char c, int i, int j)
 {
 	if (c == 'P')
 	{
-		PLAYER->x = j;
-		PLAYER->y = i;
+		data->player->x = j;
+		data->player->y = i;
 	}
 	if (c == 'C')
-		PLAYER->to_collect++;
+		data->player->to_collect++;
 	if (c == 'E')
 	{
-		PLAYER->exit_x = j;
-		PLAYER->exit_y = i;
+		data->player->exit_x = j;
+		data->player->exit_y = i;
 	}
 	if (c == 'X')
 		ft_add_enemi(data, i, j);
@@ -48,27 +48,15 @@ void	ft_map_info(t_data *data)
 	int	j;
 
 	i = -1;
-	PLAYER->step = 0;
-	PLAYER->to_collect = 0;
-	PLAYER->collected = 0;
-	PLAYER->enemies = 0;
+	data->player->step = 0;
+	data->player->to_collect = 0;
+	data->player->collected = 0;
+	data->player->enemies = 0;
 	*data->enem_lst = NULL;
-	while (MAP[++i])
+	while (data->map2d[++i])
 	{
 		j = -1;
-		while (MAP[i][++j])
-			ft_check_char(data, MAP[i][j], i, j);
+		while (data->map2d[i][++j])
+			ft_check_char(data, data->map2d[i][j], i, j);
 	}
-	// i = -1;
-	// PLAYER->e_pos = ft_calloc(PLAYER->enemies, 2);
-	// while (MAP[++i])
-	// {
-	// 	j = -1;
-	// 	while (MAP[i][++j])
-	// 	{
-	// 		if (MAP[i][j] == 'X')
-	// 			ft_add_enemi(data, i, j);
-	// 	}
-	// }
-	// printf("Ennemis : %d\n", data->player->enemies);
 }
