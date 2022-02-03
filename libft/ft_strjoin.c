@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 18:36:20 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/27 11:31:45 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:44:52 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (*s2)
 		str[i++] = *s2++;
 	str[i] = '\0';
-	// free(s1);
+	free(s1);
 	return (str);
 }
