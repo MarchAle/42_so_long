@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:32:14 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 13:36:16 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:07:49 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	ft_init_data(t_data *data)
 	img = malloc(sizeof(t_img));
 	p_anim = malloc(sizeof(t_anim));
 	enem_lst = malloc(sizeof(t_enem));
+	if (!mlx || !player || !img || !p_anim || !enem_lst)
+		exit(EXIT_FAILURE);
 	data->mlx = mlx;
 	data->player = player;
 	data->img = img;

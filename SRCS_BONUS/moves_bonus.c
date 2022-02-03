@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves.c                                            :+:      :+:    :+:   */
+/*   moves_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:10:20 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 13:23:55 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:08:58 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	ft_check_exit(t_data *data)
 {
 	if (data->player->collected == data->player->to_collect)
 	{
-		mlx_destroy_window(data->mlx, data->mlx->win);
+		mlx_clear_window(data->mlx->mlx, data->mlx->win);
+		mlx_destroy_window(data->mlx->mlx, data->mlx->win);
 		exit(EXIT_SUCCESS);
 	}
 	printf("%d remaining items to collect !\n", \
@@ -32,6 +33,7 @@ void	move_up(t_data *data)
 		if (data->map2d[data->player->y - 1][data->player->x] == 'C')
 		{
 			data->player->collected++;
+			data->map2d[data->player->y - 1][data->player->x] = '0';
 			ft_print_exit(data, data->player->exit_x, data->player->exit_y);
 		}
 		data->map2d[data->player->y][data->player->x] = '0';
@@ -52,6 +54,7 @@ void	move_down(t_data *data)
 		if (data->map2d[data->player->y + 1][data->player->x] == 'C')
 		{
 			data->player->collected++;
+			data->map2d[data->player->y + 1][data->player->x] = '0';
 			ft_print_exit(data, data->player->exit_x, data->player->exit_y);
 		}
 		data->map2d[data->player->y][data->player->x] = '0';
@@ -72,6 +75,7 @@ void	move_left(t_data *data)
 		if (data->map2d[data->player->y][data->player->x - 1] == 'C')
 		{
 			data->player->collected++;
+			data->map2d[data->player->y][data->player->x - 1] = '0';
 			ft_print_exit(data, data->player->exit_x, data->player->exit_y);
 		}
 		data->map2d[data->player->y][data->player->x] = '0';
@@ -92,6 +96,7 @@ void	move_right(t_data *data)
 		if (data->map2d[data->player->y][data->player->x + 1] == 'C')
 		{
 			data->player->collected++;
+			data->map2d[data->player->y][data->player->x + 1] = '0';
 			ft_print_exit(data, data->player->exit_x, data->player->exit_y);
 		}
 		data->map2d[data->player->y][data->player->x] = '0';

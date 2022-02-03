@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemies.c                                          :+:      :+:    :+:   */
+/*   enemies_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 10:27:46 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 13:24:25 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:31:11 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,6 @@ void	ft_anim_r(t_data *data, t_enem *enemi, int i)
 
 void	ft_move_enem(t_data *data, t_enem *enemi, int i)
 {
-	if (enemi->dir == 'r' && (data->map2d[enemi->y][enemi->x + 1] != '0'
-		&& data->map2d[enemi->y][enemi->x + 1] != 'P'))
-		enemi->dir = 'l';
-	else if (enemi->dir == 'l' && (data->map2d[enemi->y][enemi->x - 1] != '0'
-		&& data->map2d[enemi->y][enemi->x - 1] != 'P'))
-		enemi->dir = 'r';
 	if (enemi->dir == 'r' && (data->map2d[enemi->y][enemi->x + 1] == '0'
 		|| data->map2d[enemi->y][enemi->x + 1] == 'P'))
 	{
@@ -70,6 +64,12 @@ void	ft_move_enem(t_data *data, t_enem *enemi, int i)
 		enemi->x--;
 		ft_anim_l(data, enemi, i);
 	}
+	if (enemi->dir == 'r' && (data->map2d[enemi->y][enemi->x + 1] != '0'
+		&& data->map2d[enemi->y][enemi->x + 1] != 'P'))
+		enemi->dir = 'l';
+	else if (enemi->dir == 'l' && (data->map2d[enemi->y][enemi->x - 1] != '0'
+		&& data->map2d[enemi->y][enemi->x - 1] != 'P'))
+		enemi->dir = 'r';
 }
 
 void	ft_animate_enemies(t_data *data)

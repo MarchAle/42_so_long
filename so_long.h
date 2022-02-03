@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:31:31 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 15:14:08 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/03 13:50:50 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,5 +166,7 @@ void	ft_move_enem(t_data *data, t_enem *enemi, int i);
 
 void	ft_check_contact(t_data *data);
 int		ft_exit(t_data *data);
+
+int		ft_level(int ac, char **av, t_data *data);
 
 #endif

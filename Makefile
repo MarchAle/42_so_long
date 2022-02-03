@@ -6,7 +6,7 @@
 #    By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/23 12:28:09 by amarchal          #+#    #+#              #
-#    Updated: 2022/02/02 15:25:58 by amarchal         ###   ########.fr        #
+#    Updated: 2022/02/03 14:21:43 by amarchal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ minilibx:
 $(NAME): $(OBJS) $(LIBMLX) $(LIB)
 		$(CC) $(OBJS) $(LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
-bonus: libft minilibx $(OBJS_BONUS)
+bonus: libft minilibx $(OBJS_BONUS) 
 		$(CC) $(OBJS_BONUS) $(LIB) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:

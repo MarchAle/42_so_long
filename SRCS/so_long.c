@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:32:14 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 15:23:35 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/03 10:11:00 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_init_data(t_data *data)
 	mlx = malloc(sizeof(t_mlx));
 	player = malloc(sizeof(t_player));
 	img = malloc(sizeof(t_img));
+	if (!mlx || !player || !img)
+		exit(EXIT_FAILURE);
 	data->mlx = mlx;
 	data->player = player;
 	data->img = img;

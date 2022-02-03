@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:13:59 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 15:30:45 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/03 14:26:14 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	ft_animate_player(t_data *data)
 		mlx_put_image_to_window(data->mlx->mlx, data->mlx->win, \
 		data->p_anim->p_4, data->player->x * SIZE, data->player->y * SIZE);
 	step = ft_itoa(data->player->step);
+	if (!step)
+		exit(EXIT_FAILURE);
 	mlx_string_put(data->mlx->mlx, data->mlx->win, \
 	(data->player->x * 100) + 10, (data->player->y * 100) + 10, 0x934d1d, step);
 	free(step);
@@ -83,8 +85,8 @@ void	ft_animate_player(t_data *data)
 
 int	ft_animate(t_data *data)
 {
-	ft_animate_player(data);
 	ft_animate_enemies(data);
+	ft_animate_player(data);
 	usleep(50000);
 	return (0);
 }
