@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 11:33:15 by amarchal          #+#    #+#             */
-/*   Updated: 2022/01/28 11:39:38 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/17 11:14:54 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ void	ft_check_file(char *file)
 	}
 }
 
+void	ft_error(int fd)
+{
+	printf("Error : map error\n");
+	close(fd);
+	exit(EXIT_FAILURE);
+}
+
 char	**ft_create_map(char *file)
 {
 	int		fd;
@@ -49,8 +56,9 @@ char	**ft_create_map(char *file)
 	char	**map2d;
 
 	ft_check_file(file);
-	map = malloc(sizeof(char) * 1);
-	map[0] = '\0';
+	map = ft_calloc(1, 1);
+	if (!map)
+		exit(EXIT_FAILURE);
 	fd = open(file, O_RDONLY);
 	str = get_next_line(fd);
 	while (str)
@@ -58,13 +66,11 @@ char	**ft_create_map(char *file)
 		map = ft_strjoin_gnl(map, str);
 		free(str);
 		str = get_next_line(fd);
-		if (str && str[0] == '\n')
-		{
-			printf("Error : map error\n");
-			exit(EXIT_FAILURE);
-		}
+		if ((str && str[0] == '\n') || !map)
+			ft_error(fd);
 	}
 	map2d = ft_split(map, '\n');
 	free(map);
+	close(fd);
 	return (map2d);
 }

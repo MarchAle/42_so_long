@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:32:14 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/03 14:07:49 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/17 10:37:09 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 	data->mlx->mlx = mlx_init();
 	data->mlx->win = mlx_new_window(data->mlx->mlx, \
 	ft_strlen(data->map2d[0]) * SIZE, \
-	ft_strlen2d(data->map2d) * SIZE, "So Long");
+	ft_strlen2d(data->map2d) * SIZE, "STARGATE");
 	ft_print_map(data);
 	mlx_loop_hook(data->mlx->mlx, ft_animate, data);
 	mlx_hook(data->mlx->win, 2, 0, key_hook, data);

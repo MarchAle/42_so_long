@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:41:33 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/03 14:26:47 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/05 10:37:44 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	ft_check_map(char **map)
 
 	i = 0;
 	map_data = malloc(sizeof(t_parse_info));
+	if (!map_data)
+		exit(EXIT_FAILURE);
 	ft_init_map_info(map_data);
 	if (map[0])
 	{

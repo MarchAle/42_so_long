@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 10:27:46 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/03 14:31:11 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/05 15:31:54 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,10 @@ void	ft_check_contact(t_data *data)
 	while (enemi)
 	{
 		if (enemi->x == data->player->x && enemi->y == data->player->y)
+		{
+			printf("GAME OVER !\n");
 			ft_exit(data);
+		}
 		enemi = enemi->next;
 	}
 }

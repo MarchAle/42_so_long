@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:10:20 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/03 11:38:04 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/05 16:04:37 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ void	ft_check_exit(t_data *data)
 {
 	if (data->player->collected == data->player->to_collect)
 	{
+		printf("YOU ESCAPED THROUGH THE STARGATE !\nVICTORY !\n");
+		mlx_clear_window(data->mlx->mlx, data->mlx->win);
 		mlx_destroy_window(data->mlx, data->mlx->win);
 		exit(EXIT_SUCCESS);
 	}
-	printf("%d remaining items to collect !\n", \
+	printf("Still %d remaining items to collect !\n", \
 	data->player->to_collect - data->player->collected);
 }
 

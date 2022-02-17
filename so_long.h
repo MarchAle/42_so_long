@@ -6,7 +6,7 @@
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 17:31:31 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/03 13:50:50 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/05 15:00:02 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_player
 	int		step;
 	int		exit_x;
 	int		exit_y;
-	int		enemies;
 	char	**e_pos;
 }	t_player;
 
@@ -79,7 +78,6 @@ typedef struct s_img
 	void	*e7;
 	void	*rocks;
 	void	*gem;
-	void	*enem;
 	void	*floor;
 	void	*collectible;
 	void	*el_1;

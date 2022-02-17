@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_info.c                                         :+:      :+:    :+:   */
+/*   map_info_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchal <amarchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 17:41:47 by amarchal          #+#    #+#             */
-/*   Updated: 2022/02/02 13:22:35 by amarchal         ###   ########.fr       */
+/*   Updated: 2022/02/05 11:14:05 by amarchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_add_enemi(t_data *data, int i, int j)
 	t_enem	*new_enem;
 
 	new_enem = malloc(sizeof(t_enem));
+	if (!new_enem)
+		exit(EXIT_FAILURE);
 	new_enem->x = j;
 	new_enem->y = i;
 	new_enem->dir = 'l';
@@ -51,7 +53,6 @@ void	ft_map_info(t_data *data)
 	data->player->step = 0;
 	data->player->to_collect = 0;
 	data->player->collected = 0;
-	data->player->enemies = 0;
 	*data->enem_lst = NULL;
 	while (data->map2d[++i])
 	{
